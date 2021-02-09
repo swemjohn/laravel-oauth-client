@@ -422,6 +422,10 @@
             <input type="checkbox" id="read_grade" name="permissions[]" value="read_grade">
             <label for="read_grade">Grade</label>
             </div>
+            <div class="organisation">
+            <input type="checkbox" id="read_organisation" name="permissions[]" value="read_organisation">
+            <label for="read_organisation">Organisation</label>
+            </div>
 
 
             <br>
