@@ -63,7 +63,7 @@
         .bg-gray-100 {
             --bg-opacity: 1;
             background-color: #f7fafc;
-            background-color: rgba(247, 250, 252, var(--bg-opacity))
+            background-color: rgba(247, 250, 252, var(--bg-opacity))welcome
         }
 
         .border-gray-200 {
@@ -103,14 +103,7 @@
         .h-5 {
             height: 1.25rem
         }
-function myFunction() {
-  var x = document.getElementById("myDIV");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-}
+
         .h-8 {
             height: 2rem
         }
@@ -399,16 +392,6 @@ function myFunction() {
             font-family: 'Nunito';
         }
     </style>
-    <script>
-        function toggleDisplay() {
-            var x = document.getElementById("auth_options");
-            if (x.style.display === "none") {
-                x.style.display = "block";
-            } else {
-                x.style.display = "none";
-            }
-        }
-    </script>
 </head>
 <body class="antialiased">
 <div class="form-group ml-12">
@@ -425,88 +408,39 @@ function myFunction() {
             @endauth
         </div>
     @endif
+    @php
+dd($user);
+@endphp
 
     <div class="form-group">
         <h2>GCS-Flow</h2>
-        @if($loggedIn)
-            <p>Welcome to GCS Flow.</p>
 
-            You are logged in <pre>{{ $id_token }}</pre>
+            <p>Your details</p>
+
             <ul>
-                <li><a href="/details">My Details</a></li>
+                <li><a href="/">Home</a></li>
                 <li><a href="/logout">Logout</a></li>
             </ul>
-        @else
-
-        <form method="post" action="/redirect">
-            @csrf
-
-            <button class="text-lg" type="submit">Login with GCS Connect</button>
-            <br>            <br>            <br>            <br>            <br>            <br>            <br>
-            <a href="#" onclick="toggleDisplay();">Developer options</a>
-            <div style="display: none" id="auth_options">
-
-                <div class="openid">
-                    <input type="checkbox" id="openid" name="permissions[]" value="openid" checked>
-                    <label for="openid">openid</label>
-                </div>
-
-                <div class="basic_profile">
-                    <input type="checkbox" id="profile.basic" name="permissions[]" value="profile.basic" checked>
-                    <label for="profile.basic">Basic profile Information</label>
-                </div>
-
-                <div class="full_profile">
-                    <input type="checkbox" id="profile.full" name="permissions[]" value="profile.full" checked>
-                    <label for="profile.full">Full profile Information</label>
-                </div>
-
-                <div class="email">
-                    <input type="checkbox" id="profile.email" name="permissions[]" value="profile.email" checked>
-                    <label for="profile.email">Email</label>
-                </div>
-
-                <div class="name">
-                    <input type="checkbox" id="profile.name" name="permissions[]" value="profile.name" checked>
-                    <label for="nameprofile">Name</label>
-                </div>
-
-                <div class="phone">
-                    <input type="checkbox" id="profile.phone" name="permissions[]" value="profile.phone" checked>
-                    <label for="profile.phone">Phone</label>
-                </div>
-                <div class="grade">
-                    <input type="checkbox" id="profile.grade" name="permissions[]" value="profile.grade" checked>
-                    <label for="profile.grade">Grade</label>
-                </div>
-
-                <div class="membertype">
-                    <input type="checkbox" id="profile.membertype" name="permissions[]" value="profile.membertype" checked>
-                    <label for="profile.membertype">Membertype</label>
-                </div>
-
-                <div class="usergroup">
-                    <input type="checkbox" id="profile.usergroup" name="permissions[]" value="profile.usergroup" checked>
-                    <label for="profile.usergroup">Usergroup</label>
-                </div>
-
-                <div class="region">
-                    <input type="checkbox" id="profile.region" name="permissions[]" value="profile.region" checked>
-                    <label for="regionprofile">Region</label>
-                </div>
 
 
-
-
-
-
-                <br>
-                <br></div>
-        </form>
-
-
-        @endif
-
+            <table style="border: 1px solid black">
+                <tr>
+                    <td>Name</td>
+                    <td>{{ $user["name"] }}</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>{{ $user["email"] }}</td>
+                </tr>
+                <tr>
+                    <td>Grade</td>
+                    <td>{{ $user["user_metadata"]["grade"] }}</td>
+                </tr>
+                <tr>
+                    <td>Telephone</td>
+                    <td>{{ $user["telephone"] }}</td>
+                </tr>
+            </table>
     </div>
 
 
