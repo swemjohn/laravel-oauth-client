@@ -440,7 +440,6 @@ function myFunction() {
 
         <form method="post" action="/redirect">
             @csrf
-
             <button class="text-lg" type="submit">Login with GCS Connect</button>
             <br>            <br>            <br>            <br>            <br>            <br>            <br>
             <a href="#" onclick="toggleDisplay();">Developer options</a>
